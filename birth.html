@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Adiba!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #000000, #001f3f);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5em;
+    }
+    p {
+      margin: 20px;
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    img {
+      border-radius: 20px;
+      width: 300px;
+      height: auto;
+      margin-top: 20px;
+    }
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 5s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+    .click-message {
+      font-size: 1em;
+      margin-top: 30px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body onclick="playMusic()">
+  <div class="hearts" id="hearts"></div>
+  <h1>Happy Birthday Piwpiw!</h1>
+  <p>
+    Semoga semua kebahagiaan datang seterusnya di umur kamu yang sekarang.<br>
+    Aku bangga dan bersyukur punya kamu yang hebat dan kuat ini dalam menghadapi apapun.<br>
+    Ayo kita gapai mimpi bersama kedepannya.<br>
+    I'm lucky to have you sayangg 🖤
+  </p>
+  <img src="00cef454-ebd8-473b-8023-a572ff8f7800.jpg" alt="Adiba dan Kamu">
+  <div class="click-message">(Klik layar untuk mulai musik 🎶)</div>
+  <audio id="bg-music" src="https://dl.dropboxusercontent.com/scl/fi/c6r9ew3sg3uujc4tbq9oq/LANY-You.mp3?rlkey=0jc13kls15jgbce87hsyv8k7s&dl=0" loop></audio>
+  <script>
+    function playMusic() {
+      const audio = document.getElementById('bg-music');
+      audio.play();
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      document.getElementById('hearts').appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
